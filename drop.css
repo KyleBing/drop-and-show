@@ -75,10 +75,6 @@ body {
   padding: 20px;
 }
 
-.prototype {
-  display: none;
-}
-
 .logo {
   margin-left: 20px;
   font-weight: bold;
@@ -128,6 +124,10 @@ body {
   border-radius: 10px;
 }
 .container .image {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   transition: all 0.5s;
 }
 .container .image .image-wrapper {
@@ -175,4 +175,8 @@ body {
 
 .hidden {
   display: none;
+}
+
+.prototype {
+  display: none !important;
 }
