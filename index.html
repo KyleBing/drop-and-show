@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+   <meta charset="UTF-8">
+   <title>Drop&Show</title>
+   <link rel="stylesheet" href="drop.css?v=20220621103423">
+</head>
+<body >
+<h1 class="logo">DropZone<span class="hint">批量拖动图片或文本到下面区域 txt  jpg  gif  svg，比如可以批量显示 svg</span></h1>
+<div class="container"
+     ondrop="handleDrag(event)"
+     ondragleave="handleDragEnd()"
+     ondragend="handleDragEnd()"
+     ondragover="handleDragOver(event)"
+     id="dropZone">
+
+   <!--prototype image-->
+   <div class="image prototype">
+      <div onclick="showImage(event)" class="image-wrapper">
+         <img src="" alt="">
+      </div>
+      <p class="file-name">文件名</p>
+   </div>
+
+   <!-- prototype text-->
+   <div class="text prototype">
+      <p class="text-content"></p>
+      <p class="file-name">文件名</p>
+   </div>
+</div>
+
+<div class="modal hidden" onclick="hideImage()">
+   <img>
+</div>
+
+</body>
+
+<script>
+
+   console.log(`
+   本来是测试 Drop 文件的功能的，
+   突然发现这样查看图片特别有意思，
+   就有了这个
+
+                  2021-04-07
+   `)
+
+   function relocateDom(){
+      $('.container').style.minHeight = innerHeight - 60 - 40 + 'px'
+      $('.modal').style.height = innerHeight + 'px'
+      $('.modal img').style.maxHeight = innerHeight - 80 + 'px'
+   }
+
+   window.onload = relocateDom
+
+   function handleDragOver(event){
+      event.preventDefault()
+      $('.container').classList.add('on-hover')
+   }
+   function handleDragEnd(){
+      $('.container').classList.remove('on-hover')
+   }
+   function handleDrag(event){
+
+      handleDragEnd()
+      // prevent browser open file in new tab
+      event.preventDefault()
+
+      let files = event.dataTransfer.files;
+      console.log(event)
+      showFiles(files)
+
+/*      if(event.dataTransfer.items){
+         let items = event.dataTransfer.items;
+         for (let i=0; i<items.length; i++){
+            let currentFile = items[i].getAsFile();
+         }
+      }*/
+   }
+
+   function showFiles(files){
+      for (let i=0; i<files.length; i++){
+         let reader = new FileReader();
+         let file = files[i]
+         // console.log(file)
+         if (/^image\/[png|jepg|svg]/.test(file.type)){ // image file
+            reader.onload = () => {
+               insertNewImage(reader.result, file)
+               console.log(file)
+            }
+            reader.readAsDataURL(file)
+         } else if (/^text\//.test(file.type)){ // text
+            reader.onload = () => {
+               insertNewText(reader.result, file)
+            }
+            reader.readAsText(file)
+         }
+      }
+   }
+
+   function insertNewImage(url, file){
+      let display = $('.container')
+      let prototype = $('.prototype.image')
+      let imageDom = prototype.cloneNode(true)
+      imageDom.classList.remove('prototype')
+      imageDom.querySelector('img').setAttribute('src', url)
+      imageDom.querySelector('.file-name').innerText = file.name
+      imageDom.querySelector('.image-wrapper').addEventListener('onclick', function(event){
+         showImage(event)
+      })
+
+      display.appendChild(imageDom)
+   }
+
+   function insertNewText(text, file){
+      let display = $('.container')
+      let prototype = $('.prototype.text')
+      let textDom = prototype.cloneNode(true)
+      textDom.classList.remove('prototype')
+      textDom.querySelector('.text-content').innerText = text
+      textDom.querySelector('.file-name').innerText = file.name
+      display.appendChild(textDom)
+   }
+
+   function showImage(event){
+      let modal = $('.modal')
+      modal.classList.remove('hidden')
+      let imageBase64 = event.target.getAttribute('src')
+      modal.querySelector('img').setAttribute('src', imageBase64)
+   }
+   function hideImage(){
+      $('.modal').classList.add('hidden')
+   }
+
+   function $(selector){
+      return document.querySelector(selector)
+   }
+</script>
+
+<script>
+   setTimeout(() => {
+      if (!/^http:\/\/(a\.kylebing\.cn|localhost|192\.168\.\d{1,3}\.\d{1,3})/i.test(location.href)) {
+         let hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?4c38aa033a28148b63e1dc9de12b7631";
+         let s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+      }
+   }, 1000)
+</script>
+</html>

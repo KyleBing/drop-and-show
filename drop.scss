@@ -1,0 +1,112 @@
+@import "../../lib/css/reset";
+
+$border: #dadada;
+
+body{
+  padding: 20px;
+}
+
+.prototype{
+  display: none;
+}
+.logo {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #888;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  .hint {
+    color: #ccc;
+    margin-left: 20px;
+    font-size: 1rem;
+  }
+}
+
+.container{
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  border: 1px dashed $border;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  &.on-hover{
+    background-color: rgb(243, 255, 199);
+  }
+  > *{
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+  }
+  .text{
+    width: 30%;
+    .text-content{
+      font-size: 0.7rem;
+      height: 150px;
+      padding: 10px;
+      overflow-y: auto;
+      border: 1px solid $border;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+  }
+  .image{
+    transition: all 0.5s;
+    .image-wrapper{
+      border: 1px solid $border;
+      display: block;
+      overflow: hidden;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      img{
+        display: block;
+        height: 150px;
+      }
+    }
+    &:hover{
+      .image-wrapper{
+        transition: all 0.5s;
+        box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      }
+    }
+  }
+}
+
+.file-name{
+  margin-top: 5px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #333;
+}
+
+.modal{
+  padding: 40px;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  img{
+    max-width: 100%;
+    display: block;
+  }
+}
+
+.hidden{
+  display: none;
+}
+
+
