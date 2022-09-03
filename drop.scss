@@ -1,6 +1,10 @@
 @import "../../lib/css/reset";
 
 $border: #dadada;
+$border-container: #bbb;
+
+$text-title: #666;
+$text-subtitle: #bbb;
 
 body{
   padding: 20px;
@@ -11,12 +15,13 @@ body{
   margin-left: 20px;
   font-weight: bold;
   font-size: 2rem;
-  color: #888;
+  color: $text-title;
   height: 50px;
   line-height: 50px;
   margin-bottom: 10px;
   .hint {
-    color: #ccc;
+    font-weight: normal;
+    color: $text-subtitle;
     margin-left: 20px;
     font-size: 1rem;
   }
@@ -32,6 +37,10 @@ body{
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
+  background-color: transparentize(black, 0.98);
+  &:hover{
+    cursor: crosshair;
+  }
   &.on-hover{
     background-color: rgb(243, 255, 199);
   }

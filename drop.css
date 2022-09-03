@@ -79,13 +79,14 @@ body {
   margin-left: 20px;
   font-weight: bold;
   font-size: 2rem;
-  color: #888;
+  color: #666;
   height: 50px;
   line-height: 50px;
   margin-bottom: 10px;
 }
 .logo .hint {
-  color: #ccc;
+  font-weight: normal;
+  color: #bbb;
   margin-left: 20px;
   font-size: 1rem;
 }
@@ -100,6 +101,10 @@ body {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.container:hover {
+  cursor: crosshair;
 }
 .container.on-hover {
   background-color: #f3ffc7;
@@ -180,3 +185,5 @@ body {
 .prototype {
   display: none !important;
 }
+
+/*# sourceMappingURL=drop.css.map */
