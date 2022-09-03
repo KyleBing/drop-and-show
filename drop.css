@@ -97,7 +97,7 @@ body {
   justify-content: flex-start;
   flex-flow: row wrap;
   align-items: flex-start;
-  border: 1px dashed #dadada;
+  border: 1px dashed #bbb;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -185,5 +185,3 @@ body {
 .prototype {
   display: none !important;
 }
-
-/*# sourceMappingURL=drop.css.map */
