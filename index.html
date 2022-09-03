@@ -2,12 +2,17 @@
 <html lang="zh-CN">
 <head>
    <meta charset="UTF-8">
-   <title>Drop&Show</title>
+   <title>Drop and Show</title>
    <link rel="shortcut icon" href="favicon.png" type="image/png">
-   <link rel="stylesheet" href="drop.css?v=20220903173648">
+   <link rel="stylesheet" href="drop.css?v=20220903174357">
 </head>
 <body >
-<h1 class="logo">Drop Zone<span class="hint">批量拖动图片或文本到下面区域 txt  jpg  gif  svg，比如可以批量显示 svg</span></h1>
+<div class="header">
+   <img class="logo" src="favicon.png" alt="logo">
+   <h1 class="title">Drop Zone</h1>
+   <span class="hint">批量拖动图片或文本到下面区域 txt  jpg  gif  svg，比如可以批量显示 svg</span>
+</div>
+
 <div class="container"
      ondrop="handleDrag(event)"
      ondragleave="handleDragEnd()"

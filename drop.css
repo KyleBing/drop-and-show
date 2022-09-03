@@ -75,16 +75,25 @@ body {
   padding: 20px;
 }
 
-.logo {
-  margin-left: 20px;
-  font-weight: bold;
-  font-size: 2rem;
+.header {
+  margin-bottom: 10px;
   color: #666;
   height: 50px;
   line-height: 50px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
-.logo .hint {
+.header .logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.header .title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.header .hint {
   font-weight: normal;
   color: #bbb;
   margin-left: 20px;
