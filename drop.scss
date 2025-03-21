@@ -34,6 +34,14 @@ body{
     margin-left: 20px;
     font-size: 1rem;
   }
+  .color-picker{
+    margin-left: 40px;
+    .IroColorPicker{
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 .container{
@@ -82,14 +90,13 @@ body{
       border: 1px solid $border;
       display: block;
       overflow: hidden;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
       img{
         display: block;
-        height: 150px;
+        max-height: 150px;
+        max-width: 100%;
       }
     }
+
     &:hover{
       .image-wrapper{
         transition: all 0.5s;
@@ -103,7 +110,7 @@ body{
   margin-top: 5px;
   font-size: 0.8rem;
   text-align: center;
-  color: #333;
+  color: #777;
 }
 
 .modal{

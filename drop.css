@@ -99,6 +99,14 @@ body {
   margin-left: 20px;
   font-size: 1rem;
 }
+.header .color-picker {
+  margin-left: 40px;
+}
+.header .color-picker .IroColorPicker {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 
 .container {
   padding: 20px;
@@ -116,7 +124,7 @@ body {
   cursor: crosshair;
 }
 .container.on-hover {
-  background-color: #f3ffc7;
+  background-color: rgb(243, 255, 199);
 }
 .container > * {
   cursor: pointer;
@@ -148,13 +156,11 @@ body {
   border: 1px solid #dadada;
   display: block;
   overflow: hidden;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 .container .image .image-wrapper img {
   display: block;
-  height: 150px;
+  max-height: 150px;
+  max-width: 100%;
 }
 .container .image:hover .image-wrapper {
   transition: all 0.5s;
@@ -165,7 +171,7 @@ body {
   margin-top: 5px;
   font-size: 0.8rem;
   text-align: center;
-  color: #333;
+  color: #777;
 }
 
 .modal {

@@ -4,13 +4,15 @@
    <meta charset="UTF-8">
    <title>Drop and Show</title>
    <link rel="shortcut icon" href="favicon.png" type="image/png">
-   <link rel="stylesheet" href="drop.css?v=20220903174357">
+   <link rel="stylesheet" href="drop.css?v=20250321171641">
+   <script src="./iro.min.js"></script>
 </head>
 <body >
 <div class="header">
    <img class="logo" src="favicon.png" alt="logo">
    <h1 class="title">Drop Zone</h1>
    <span class="hint">批量拖动图片或文本到下面区域 txt  jpg  gif  svg，比如可以批量显示 svg</span>
+   <div class="color-picker"></div>
 </div>
 
 <div class="container"
@@ -43,6 +45,7 @@
 
 <script>
 
+
    console.log(`
    本来是测试 Drop 文件的功能的，
    突然发现这样查看图片特别有意思，
@@ -50,6 +53,34 @@
 
                   2021-04-07
    `)
+
+   /**
+    =======================================
+    *    COLOR PICKER
+    =======================================
+    */
+   let bgColor = localStorage.getItem('bg-color') || "rgba(0,0,0,0.98)"
+   $('.container').style.backgroundColor = bgColor
+
+   const colorPicker = new iro.ColorPicker('.color-picker', {
+      width: 50,
+      color: bgColor,
+      layoutDirection: "horizontal",
+   })
+
+   colorPicker.on('color:change', color => {
+      localStorage.setItem('bg-color', color.hexString)
+      $('.container').style.backgroundColor = color.hexString
+      $('.modal').style.backgroundColor = color.hexString
+   })
+
+   // function clearFiles(){
+   //    let container = $('.container')
+   //    while (container.firstChild) {
+   //       container.removeChild(container.firstChild);
+   //    }
+   // }
+
 
    function relocateDom(){
       $('.container').style.minHeight = innerHeight - 60 - 40 + 'px'
@@ -73,7 +104,7 @@
       event.preventDefault()
 
       let files = event.dataTransfer.files;
-      console.log(event)
+      // console.log(event)
       showFiles(files)
 
 /*      if(event.dataTransfer.items){
@@ -92,7 +123,7 @@
          if (/^image\/[png|jepg|svg]/.test(file.type)){ // image file
             reader.onload = () => {
                insertNewImage(reader.result, file)
-               console.log(file)
+               // console.log(file)
             }
             reader.readAsDataURL(file)
          } else if (/^text\//.test(file.type)){ // text
